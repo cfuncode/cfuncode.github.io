@@ -1,32 +1,223 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="frp内网穿透工具  frp的github地址：https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp官方文档：https:&#x2F;&#x2F;gofrp.org&#x2F;  本地主机连接其他局域网电脑环境准备 一台自己使用的电脑 一台不同局域网的电脑 一台具有公网IP的服务器  安装frp内网穿透工具下载frp安装包 linux版：  github下载地址：https:&#x2F;&#x2F;github.com&#x2F;fatedier">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/05/24/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="frp内网穿透工具  frp的github地址：https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp官方文档：https:&#x2F;&#x2F;gofrp.org&#x2F;  本地主机连接其他局域网电脑环境准备 一台自己使用的电脑 一台不同局域网的电脑 一台具有公网IP的服务器  安装frp内网穿透工具下载frp安装包 linux版：  github下载地址：https:&#x2F;&#x2F;github.com&#x2F;fatedier">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-05-24T15:48:00.717Z">
+<meta property="article:modified_time" content="2022-05-24T16:25:41.814Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/05/24/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-25 00:25:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">No title</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-05-24T15:48:00.717Z" title="Created 2022-05-24 23:48:00">2022-05-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-05-24T16:25:41.814Z" title="Updated 2022-05-25 00:25:41">2022-05-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="frp内网穿透工具"><a href="#frp内网穿透工具" class="headerlink" title="frp内网穿透工具"></a>frp内网穿透工具</h1><p><img src="http://img.funcode.work/images/2022/05/14/77d5eacbfe06a6d2aee42c9ee1fe5775.png"></p>
+<blockquote>
+<p>frp的github地址：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">https://github.com/fatedier/frp</a><br>官方文档：<a target="_blank" rel="noopener" href="https://gofrp.org/">https://gofrp.org/</a></p>
+</blockquote>
+<h1 id="本地主机连接其他局域网电脑"><a href="#本地主机连接其他局域网电脑" class="headerlink" title="本地主机连接其他局域网电脑"></a>本地主机连接其他局域网电脑</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
+<li>一台自己使用的电脑</li>
+<li>一台不同局域网的电脑</li>
+<li>一台具有公网IP的服务器</li>
+</ol>
+<h2 id="安装frp内网穿透工具"><a href="#安装frp内网穿透工具" class="headerlink" title="安装frp内网穿透工具"></a>安装frp内网穿透工具</h2><h3 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h3><p><img src="http://img.funcode.work/images/2022/05/14/f99aeed746ebe0c9f544410e04a90c09.png"></p>
+<p>linux版：</p>
+<ol>
+<li>github下载地址：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz">https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz</a></li>
+<li>镜像下载地址：<a target="_blank" rel="noopener" href="https://pd.zwc365.com/seturl/https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz">https://pd.zwc365.com/seturl/https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz</a></li>
+</ol>
+<p>windows版：</p>
+<ol>
+<li>github下载地址：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_windows_amd64.zip">https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_windows_amd64.zip</a></li>
+<li>镜像下载地址：<a target="_blank" rel="noopener" href="https://pd.zwc365.com/seturl/https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_windows_amd64.zip">https://pd.zwc365.com/seturl/https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_windows_amd64.zip</a></li>
+</ol>
+<h3 id="服务器安装frp"><a href="#服务器安装frp" class="headerlink" title="服务器安装frp"></a>服务器安装frp</h3><h4 id="配置服务器安全组"><a href="#配置服务器安全组" class="headerlink" title="配置服务器安全组"></a>配置服务器安全组</h4><p><strong>具体配置方法看不同厂家的文档说明，这里我用的是阿里云的服务器</strong><br><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25475.html">安全组应用案例</a><br><img src="http://img.funcode.work/images/2022/05/14/bc7253bd6f67bfa3ba5b0e856636a53f.png"></p>
+<ol>
+<li>我配置了7000~7500的端口范围，用于为frp服务器暴露端口用。</li>
+<li>设置了全部的ip都可以访问这个服务器的端口范围。</li>
+</ol>
+<h4 id="centos7系统"><a href="#centos7系统" class="headerlink" title="centos7系统"></a>centos7系统</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/system-release # 查看系统版本</span><br></pre></td></tr></table></figure>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
+<p><img src="http://img.funcode.work/images/2022/05/14/bcc67bca02d5692fd7d512c60cb0ef91.png"></p>
+<h4 id="下载安装frp"><a href="#下载安装frp" class="headerlink" title="下载安装frp"></a>下载安装frp</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://pd.zwc365.com/seturl/https://github.com/fatedier/frp/releases/download/v0.37.0/frp_0.37.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
 
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<p><img src="http://img.funcode.work/images/2022/05/25/cd82cc6e5cd5559961e5ad8af75993c6.png"></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zvxf frp_0.37.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<p><img src="http://img.funcode.work/images/2022/05/14/3fcf5d411d55437a16c643376c931947.png"></p>
+<h4 id="设置防火墙"><a href="#设置防火墙" class="headerlink" title="设置防火墙"></a>设置防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld # 查看防火墙状态</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/25/fd852c67aee92c416ea4e28b5968b9b7.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --list-ports # 查看所有放行的端口</span><br><span class="line">firewall-cmd --zone=public --add-port=7000/tcp --permanent # 永久开放7000端口</span><br><span class="line">firewall-cmd --reload # 重新加载配置</span><br><span class="line">firewall-cmd --zone=public --list-ports # 查看所有放行的端口</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/14/3a767359e855cc5b7dd348273b039ed9.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --remove-port=7000/tcp --permanent # 永久删除7000端口</span><br><span class="line">firewall-cmd --zone=public --list-ports # 查看所有放行的端口</span><br><span class="line">firewall-cmd --reload # 重新加载配置</span><br><span class="line">firewall-cmd --zone=public --list-ports # 查看所有放行的端口</span><br><span class="line">firewall-cmd --zone=public --add-port=7000-7500/tcp --permanent # 永久开放7000-7500端口</span><br><span class="line">firewall-cmd --reload # 重新加载配置</span><br><span class="line">firewall-cmd --zone=public --list-ports # 查看所有放行的端口</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/25/112a88ac17fac1653e720cd2ac8a13a2.png"></p>
+<p><strong>更多防火墙设置请参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ningyouyou/p/14759817.html">https://www.cnblogs.com/ningyouyou/p/14759817.html</a></strong></p>
+<h4 id="配置frps-ini文件"><a href="#配置frps-ini文件" class="headerlink" title="配置frps.ini文件"></a>配置frps.ini文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">frp服务端监听的端口</span></span><br><span class="line">bind_port = 7000</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">服务端的token（可随意设置）</span></span><br><span class="line">token = MY_TOKEN</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过浏览器查看frp的状态以及代理统计信息展示（可选）</span></span><br><span class="line">dashboard_port = 7500</span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = password</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/25/b38c4506b1d295887add38e3d1d5a7e0.png"></p>
+<p><strong>更多服务端配置请参考：<a target="_blank" rel="noopener" href="https://gofrp.org/docs/reference/server-configures/">https://gofrp.org/docs/reference/server-configures/</a></strong></p>
+<h4 id="启动服务端frp"><a href="#启动服务端frp" class="headerlink" title="启动服务端frp"></a>启动服务端frp</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nohup ./frps -c frps.ini &gt; frps.log 2&gt;&amp;1 &amp; # 后台启动frp服务，并输出日志到当前路径的frps.log文件中</span><br><span class="line">tail -n 20 frps.log # 查看该文件后20行信息</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/14/6cbc99e14c95c82df2b099c838ed8f9a.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep frp # 查看frp服务进程是否启动成功</span><br><span class="line">netstat -lnp|grep 7000 # 查看端口是否正在监听（使用）</span><br><span class="line">netstat -lnp|grep 7500 # 查看端口是否正在监听（使用）</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/14/840aa15ee50333307c54ee7bfb02eae7.png"></p>
+<h4 id="访问仪表盘"><a href="#访问仪表盘" class="headerlink" title="访问仪表盘"></a>访问仪表盘</h4><p><img src="http://img.funcode.work/images/2022/05/14/1f96d42225f83016d5c3a4ceac91743a.png"></p>
+<blockquote>
+<p>输入用户名和密码</p>
+</blockquote>
+<p><img src="http://img.funcode.work/images/2022/05/14/37e3799a9726dc5c79fa2e458862574f.png"></p>
+<p>看到这个页面证明frp服务器配置成功了！</p>
+<h3 id="客户端安装frp"><a href="#客户端安装frp" class="headerlink" title="客户端安装frp"></a>客户端安装frp</h3><h4 id="同理下载解压windows版frp工具"><a href="#同理下载解压windows版frp工具" class="headerlink" title="同理下载解压windows版frp工具"></a>同理下载解压windows版frp工具</h4><p><img src="http://img.funcode.work/images/2022/05/14/405fec281e8e78c23d5b370b4f9dcff5.png"></p>
+<h4 id="配置frpc-ini文件"><a href="#配置frpc-ini文件" class="headerlink" title="配置frpc.ini文件"></a>配置frpc.ini文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">自己的服务器公网IP</span></span><br><span class="line">server_addr = x.x.x.x</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">frp服务器监听的端口</span></span><br><span class="line">server_port = 7000</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置token，防止其他人随意连接服务器，从而占用带宽！(客户端token设置与服务端token要一致)</span></span><br><span class="line">token = MY_TOKEN</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">反向代理名称（可随意设置）</span></span><br><span class="line">[RDP]</span><br><span class="line">type = tcp</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本机 IP</span></span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程桌面的默认端口</span></span><br><span class="line">local_port = 3389</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">外网访问的端口（可选值7001~7499，根据之前的配置而定）</span></span><br><span class="line">remote_port = 7001</span><br><span class="line"></span><br><span class="line">[ORACLE]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 1521</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">外网访问的端口（可选值7001~7499，根据之前的配置而定）</span></span><br><span class="line">remote_port = 7002</span><br><span class="line"></span><br><span class="line">[MYSQL]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 3306</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">外网访问的端口（可选值7001~7499，根据之前的配置而定）</span></span><br><span class="line">remote_port = 7003</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">... 等等，想代理哪个端口就配置哪个！</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>更多客户端配置请参考：<a target="_blank" rel="noopener" href="https://gofrp.org/docs/reference/client-configures/">https://gofrp.org/docs/reference/client-configures/</a></strong></p>
+<h4 id="编写restart-frp-vbs文件"><a href="#编写restart-frp-vbs文件" class="headerlink" title="编写restart_frp.vbs文件"></a>编写restart_frp.vbs文件</h4><p>新建txt文件，改名为restart_frp.vbs，粘贴下面代码保存（路径需要根据实际情况配置）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.currentdirectory = &quot;D:\frp_0.37.0_windows_amd64&quot;</span><br><span class="line">ws.run &quot;cmd /c frpc -c frpc.ini &gt;&gt; frpc.log&quot;,vbhide</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://img.funcode.work/images/2022/05/14/5ce8d54f62a313a99c7b5291199b20b3.png"></p>
+<p>然后双击该文件运行！会在配置的路径生成frpc.log日志文件！</p>
+<p><strong>查看frpc.log日志文件</strong></p>
+<p><img src="http://img.funcode.work/images/2022/05/14/243e254c40c05c77dab781d7fc0989f3.png"></p>
+<p><strong>查看服务端frps.log日志文件</strong></p>
+<p><img src="http://img.funcode.work/images/2022/05/25/55a1ad3417201ee20a4dd1087743d691.png"></p>
+<h3 id="本地主机通过安装了frp的服务器连接其他局域网电脑"><a href="#本地主机通过安装了frp的服务器连接其他局域网电脑" class="headerlink" title="本地主机通过安装了frp的服务器连接其他局域网电脑"></a>本地主机通过安装了frp的服务器连接其他局域网电脑</h3><p><img src="http://img.funcode.work/images/2022/05/25/b59853c8ba265adacb246a396f30b4dc.png"></p>
+<p><strong>成功通过本地主机连接代理的局域网电脑的oracle数据库！！！</strong></p>
+<h3 id="最后设置客户端开机自动启动frp内网穿透服务"><a href="#最后设置客户端开机自动启动frp内网穿透服务" class="headerlink" title="最后设置客户端开机自动启动frp内网穿透服务"></a>最后设置客户端开机自动启动frp内网穿透服务</h3><p><img src="http://img.funcode.work/images/2022/05/25/f081b8776c1b1b391942761a35a61208.png"><br>C:\Users\XXX\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup<br><strong>将<code>restart_frp.vbs</code>文件复制到该路径即可开机自动启动了！</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/05/24/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">http://example.com/2022/05/24/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">frp内网穿透工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5%E5%85%B6%E4%BB%96%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91"><span class="toc-number">2.</span> <span class="toc-text">本地主机连接其他局域网电脑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">2.2.</span> <span class="toc-text">安装frp内网穿透工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDfrp%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">2.2.1.</span> <span class="toc-text">下载frp安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85frp"><span class="toc-number">2.2.2.</span> <span class="toc-text">服务器安装frp</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">配置服务器安全组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#centos7%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">centos7系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85frp"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">下载安装frp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B"><span class="toc-number">2.2.2.4.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">2.2.2.5.</span> <span class="toc-text">设置防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEfrps-ini%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.2.6.</span> <span class="toc-text">配置frps.ini文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E7%AB%AFfrp"><span class="toc-number">2.2.2.7.</span> <span class="toc-text">启动服务端frp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E4%BB%AA%E8%A1%A8%E7%9B%98"><span class="toc-number">2.2.2.8.</span> <span class="toc-text">访问仪表盘</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85frp"><span class="toc-number">2.2.3.</span> <span class="toc-text">客户端安装frp</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E7%90%86%E4%B8%8B%E8%BD%BD%E8%A7%A3%E5%8E%8Bwindows%E7%89%88frp%E5%B7%A5%E5%85%B7"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">同理下载解压windows版frp工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEfrpc-ini%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">配置frpc.ini文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99restart-frp-vbs%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">编写restart_frp.vbs文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E4%B8%BB%E6%9C%BA%E9%80%9A%E8%BF%87%E5%AE%89%E8%A3%85%E4%BA%86frp%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%85%B6%E4%BB%96%E5%B1%80%E5%9F%9F%E7%BD%91%E7%94%B5%E8%84%91"><span class="toc-number">2.2.4.</span> <span class="toc-text">本地主机通过安装了frp的服务器连接其他局域网电脑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E8%AE%BE%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.5.</span> <span class="toc-text">最后设置客户端开机自动启动frp内网穿透服务</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/24/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/05/24/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="No title">No title</a><time datetime="2022-05-24T15:48:00.717Z" title="Created 2022-05-24 23:48:00">2022-05-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><span>&nbsp;|&nbsp;</span>
+<img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png">
+<a href="https://beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">粤ICP备20056073号</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
